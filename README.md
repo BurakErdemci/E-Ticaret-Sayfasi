@@ -1,6 +1,6 @@
 🛒 Basit E-Ticaret Projesi
 
-Bu proje, giriş seviyesi bir e-ticaret platformu olu seviyesi bir e-ticaret platformu olu\u015turmayı hedefleyen bir çalışmadır.💼 Yönetim Paneli üzerinden ürün, marka ve kategori ekleme işlemleri yapılabilir.🖥️ UI (Kullanıcı Arayüzü) kısmında ise:
+Bu proje, giriş seviyesi bir e-ticaret projesi olup başlangıç seviyesi bir e-ticaret platformu oluşturmayı hedefleyen bir çalışmadır.💼 Yönetim Paneli üzerinden ürün, marka ve kategori ekleme işlemleri yapılabilir.🖥️ UI (Kullanıcı Arayüzü) kısmında ise:
 
 👤 Kayıt olma (Register)
 
@@ -30,6 +30,8 @@ UI tarafında bu görselleri kullanmak için:
 ASP.NET Core
 
 Entity Framework Core
+
+Database:Sqlite
 
 
 Geliştirici: [Burak Erdemci]🚀 İyi Kodlamalar!
