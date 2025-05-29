@@ -1,0 +1,30 @@
+C:\visual studio codes\LunasShop\Core\bin\Debug\net8.0\Core.deps.json
+C:\visual studio codes\LunasShop\Core\bin\Debug\net8.0\Core.dll
+C:\visual studio codes\LunasShop\Core\bin\Debug\net8.0\Core.pdb
+C:\visual studio codes\LunasShop\Core\bin\Debug\net8.0\Utilities.dll
+C:\visual studio codes\LunasShop\Core\bin\Debug\net8.0\Utilities.pdb
+C:\visual studio codes\LunasShop\Core\obj\Debug\net8.0\Core.csproj.AssemblyReference.cache
+C:\visual studio codes\LunasShop\Core\obj\Debug\net8.0\Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\visual studio codes\LunasShop\Core\obj\Debug\net8.0\Core.AssemblyInfoInputs.cache
+C:\visual studio codes\LunasShop\Core\obj\Debug\net8.0\Core.AssemblyInfo.cs
+C:\visual studio codes\LunasShop\Core\obj\Debug\net8.0\Core.csproj.CoreCompileInputs.cache
+C:\visual studio codes\LunasShop\Core\obj\Debug\net8.0\Core.csproj.Up2Date
+C:\visual studio codes\LunasShop\Core\obj\Debug\net8.0\Core.dll
+C:\visual studio codes\LunasShop\Core\obj\Debug\net8.0\refint\Core.dll
+C:\visual studio codes\LunasShop\Core\obj\Debug\net8.0\Core.pdb
+C:\visual studio codes\LunasShop\Core\obj\Debug\net8.0\ref\Core.dll
+C:\Users\burcu\Desktop\E-Ticaret Sayfası\Core\bin\Debug\net8.0\Core.deps.json
+C:\Users\burcu\Desktop\E-Ticaret Sayfası\Core\bin\Debug\net8.0\Core.dll
+C:\Users\burcu\Desktop\E-Ticaret Sayfası\Core\bin\Debug\net8.0\Core.pdb
+C:\Users\burcu\Desktop\E-Ticaret Sayfası\Core\bin\Debug\net8.0\Utilities.dll
+C:\Users\burcu\Desktop\E-Ticaret Sayfası\Core\bin\Debug\net8.0\Utilities.pdb
+C:\Users\burcu\Desktop\E-Ticaret Sayfası\Core\obj\Debug\net8.0\Core.csproj.AssemblyReference.cache
+C:\Users\burcu\Desktop\E-Ticaret Sayfası\Core\obj\Debug\net8.0\Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\burcu\Desktop\E-Ticaret Sayfası\Core\obj\Debug\net8.0\Core.AssemblyInfoInputs.cache
+C:\Users\burcu\Desktop\E-Ticaret Sayfası\Core\obj\Debug\net8.0\Core.AssemblyInfo.cs
+C:\Users\burcu\Desktop\E-Ticaret Sayfası\Core\obj\Debug\net8.0\Core.csproj.CoreCompileInputs.cache
+C:\Users\burcu\Desktop\E-Ticaret Sayfası\Core\obj\Debug\net8.0\Core.csproj.Up2Date
+C:\Users\burcu\Desktop\E-Ticaret Sayfası\Core\obj\Debug\net8.0\Core.dll
+C:\Users\burcu\Desktop\E-Ticaret Sayfası\Core\obj\Debug\net8.0\refint\Core.dll
+C:\Users\burcu\Desktop\E-Ticaret Sayfası\Core\obj\Debug\net8.0\Core.pdb
+C:\Users\burcu\Desktop\E-Ticaret Sayfası\Core\obj\Debug\net8.0\ref\Core.dll

@@ -1,0 +1,55 @@
+@page
+@model OrdersModel
+@{
+    ViewData["Title"] = "Siparişlerim";
+}
+
+<div class="container py-5">
+    <h2 class="mb-4 text-center">Siparişlerim</h2>
+
+    @if (Model.Orders == null || !Model.Orders.Any())
+    {
+        <div class="alert alert-info text-center">
+            <i class="bi bi-info-circle me-2"></i>
+            Henüz siparişiniz bulunmamaktadır.
+            <a href="/product" class="alert-link ms-2">Alışverişe başlamak için tıklayın</a>
+        </div>
+    }
+    else
+    {
+        <div class="row g-4">
+            @foreach (var order in Model.Orders)
+            {
+                <div class="col-12">
+                    <div class="card shadow-sm" style="background-color: #181b1b; border: 1px solid #232323; color: #fff;">
+                        <div class="card-header" style="background-color: #232323; border-bottom: 1px solid #333;">
+                            <h5 class="mb-0" style="color:#ffb347;">Sipariş No: @order.Id</h5>
+                            <small>Tarih: @order.CreateDate.ToShortDateString()</small>
+                        </div>
+                        <div class="card-body">
+                            <h6>Ürünler:</h6>
+                            <ul class="list-group list-group-flush" style="background-color: #181b1b;">
+                                @foreach (var detail in order.OrderDetails)
+                                {
+                                    <li class="list-group-item d-flex justify-content-between align-items-center" style="background-color: #181b1b; color:#fff; border-color: #333;">
+                                        <div>
+                                            @detail.Product?.Name
+                                            <small class="text-muted">x @detail.Quantity</small>
+                                        </div>
+                                        <span class="fw-bold">@detail.LineTotal.ToString("C")</span>
+                                    </li>
+                                }
+                            </ul>
+                            <div class="text-end mt-3">
+                                <h5 style="color:#ffb347;">Toplam Tutar: @order.TotalDue.ToString("C")</h5>
+                            </div>
+                        </div>
+                        <div class="card-footer text-end" style="background-color: #232323; border-top: 1px solid #333;">
+                             <span class="badge bg-info text-dark">Durum: @order.OrderStatus</span>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div> 

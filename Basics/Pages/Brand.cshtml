@@ -1,0 +1,49 @@
+@page
+@model BrandModel
+@{
+    ViewData["Title"] = "Markalar";
+}
+
+<section class="brand-list-section py-5">
+    <div class="container">
+        <h2 class="mb-4">Markalar</h2>
+        <div class="row">
+            @if (Model.Brands != null && Model.Brands.Any())
+            {
+                foreach (var brand in Model.Brands)
+                {
+                    <div class="col-md-3 mb-4">
+                        <div class="card h-100 shadow-sm text-center">
+                            <img src="@brand.LogoImagePath" class="card-img-top p-4" alt="@brand.Name" style="object-fit:contain;width:100%;height:150px;">
+                            <div class="card-body">
+                                <h5 class="card-title">@brand.Name</h5>
+                                <p class="card-text">@brand.Description</p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="col-12">
+                    <p>Hiç marka bulunamadı.</p>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+<style>
+.brand-list-section .card-img-top {
+    object-fit: contain;
+    width: 100%;
+    height: 150px;
+}
+
+.card,
+.card.product-card,
+.card.h-100 {
+    background-color: #181b1b !important;
+    border: 1px solid #232323;
+    color: #fff;
+}
+</style> 

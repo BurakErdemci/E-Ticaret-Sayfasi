@@ -1,0 +1,23 @@
+@page
+@model PurchaseSuccessModel
+@{
+    ViewData["Title"] = "Satın Alma Başarılı";
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm p-5" style="background-color: #181b1b; border: 1px solid #232323; color: #fff;">
+                <div class="text-center">
+                    <i class="bi bi-check-circle-fill text-success" style="font-size: 5rem;"></i>
+                    <h2 class="mt-4 mb-3" style="color:#ffb347;">Satın Alma İşlemi Başarılı!</h2>
+                    <p class="mb-4" style="color:#ffd580; font-weight:600; font-size:1.15rem;">Siparişiniz başarıyla alındı. Sipariş detaylarınız e-posta adresinize gönderilecektir.</p>
+                    <div class="d-flex justify-content-center gap-3">
+                        <a href="/" class="btn btn-primary px-4 py-2" style="background:#ffb347; color:#181b1b; border:none; font-weight:600; font-size:1.1rem;">Ana Sayfaya Dön</a>
+                        <a href="/Orders" class="btn btn-outline-primary px-4 py-2" style="border:1px solid #ffb347; color:#ffb347; background:none; font-weight:600; font-size:1.1rem;">Siparişlerimi Görüntüle</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 

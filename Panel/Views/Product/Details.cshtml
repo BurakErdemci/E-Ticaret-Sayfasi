@@ -1,0 +1,102 @@
+@model Core.Concretes.DTOs.Panel.ProductDTO
+
+@{
+    ViewData["Title"] = "Product Details";
+}
+
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Product Details</h1>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+            <i class="fas fa-edit fa-sm text-white-50"></i> Edit
+        </a>
+        <a asp-action="Index" class="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm">
+            <i class="fas fa-arrow-left fa-sm text-white-50"></i> Back to List
+        </a>
+    </div>
+</div>
+
+<div class="row">
+    <!-- Product Details Card -->
+    <div class="col-xl-6 col-lg-6">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Basic Information</h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th class="w-25">ID</th>
+                            <td>@Model.Id</td>
+                        </tr>
+                        <tr>
+                            <th>Name</th>
+                            <td>@Model.Name</td>
+                        </tr>
+                        <tr>
+                            <th>Description</th>
+                            <td>@Model.Description</td>
+                        </tr>
+                        <tr>
+                            <th>Category</th>
+                            <td>@(Model.Category?.Name ?? "-")</td>
+                        </tr>
+                        <tr>
+                            <th>Price</th>
+                            <td>@Model.Price.ToString("C")</td>
+                        </tr>
+                        <tr>
+                            <th>Stock</th>
+                            <td>@Model.Stock</td>
+                        </tr>
+                        <tr>
+                            <th>Status</th>
+                            <td>
+                                @if (Model.Active)
+                                {
+                                    <span class="badge badge-success">Active</span>
+                                }
+                                else
+                                {
+                                    <span class="badge badge-danger">Inactive</span>
+                                }
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Image</th>
+                            <td>
+                                @if (!string.IsNullOrEmpty(Model.ImagePath))
+                                {
+                                    <img src="@Model.ImagePath" alt="@Model.Name" width="100" />
+                                }
+                                else
+                                {
+                                    <span class="text-muted">No image</span>
+                                }
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Brand</th>
+                            <td>
+                                @if (Model.Brand != null)
+                                {
+                                    <span>@Model.Brand.Name</span>
+                                    @if (!string.IsNullOrEmpty(Model.Brand.LogoImagePath))
+                                    {
+                                        <img src="@Model.Brand.LogoImagePath" alt="@Model.Brand.Name" width="50" style="margin-left:10px;vertical-align:middle;" />
+                                    }
+                                }
+                                else
+                                {
+                                    <span class="text-muted">-</span>
+                                }
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 

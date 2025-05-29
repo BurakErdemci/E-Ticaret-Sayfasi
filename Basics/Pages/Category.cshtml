@@ -1,0 +1,135 @@
+@page
+@model CategoryModel
+@{
+    ViewData["Title"] = "Kategoriler";
+}
+
+<main class="main">
+    <!-- Categories Section -->
+    <section id="categories" class="categories section">
+        <div class="container" data-aos="fade-up">
+            <div class="section-header">
+                <h2>Kategoriler</h2>
+                <p>İhtiyacınıza uygun kategoriyi seçin</p>
+            </div>
+            <div class="row">
+                @foreach (var category in Model.Categories)
+                {
+                    <div class="col-md-3 mb-4">
+                        <div class="card h-100 shadow-sm">
+                            <img src="@category.CoverImagePath" class="card-img-top" alt="@category.Name" style="object-fit:cover;width:100%;height:200px;">
+                            <div class="card-body d-flex flex-column justify-content-between">
+                                <h5 class="card-title text-truncate" title="@category.Name">@category.Name</h5>
+                                <p class="card-text">@category.Description</p>
+                                <a href="/category/@category.Id" class="btn btn-primary w-100 mt-auto">Alt Kategorileri Gör</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features section">
+        <div class="container" data-aos="fade-up">
+            <div class="row gy-4">
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="bi bi-truck"></i>
+                        </div>
+                        <h4>Hızlı Teslimat</h4>
+                        <p>Siparişleriniz aynı gün kargoya verilir</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="bi bi-shield-check"></i>
+                        </div>
+                        <h4>Güvenli Alışveriş</h4>
+                        <p>256-bit SSL güvenlik sertifikası</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="bi bi-arrow-return-left"></i>
+                        </div>
+                        <h4>Kolay İade</h4>
+                        <p>14 gün içinde ücretsiz iade</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="bi bi-headset"></i>
+                        </div>
+                        <h4>7/24 Destek</h4>
+                        <p>Her zaman yanınızdayız</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<style>
+    .card-img-top {
+        object-fit: cover;
+        width: 100%;
+        height: 200px;
+    }
+    .card,
+    .card.product-card,
+    .card.h-100 {
+        background-color: #181b1b !important;
+        border: 1px solid #232323;
+        color: #fff;
+    }
+    .card .card-title,
+    .card .card-text {
+        color: #fff;
+    }
+    .card .btn-primary {
+        background: #232323 !important;
+        color: #ffb347 !important;
+        border: 1px solid #ffb347 !important;
+    }
+    .card .btn-primary:hover {
+        background: #ffb347 !important;
+        color: #181b1b !important;
+    }
+
+    .feature-item {
+        background: #181b1b !important;
+        color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 2px 12px 0 rgba(0,0,0,0.15);
+    }
+
+    .feature-item h4 {
+        color: #fff;
+    }
+
+    .feature-item p {
+        color: #e0e0e0;
+    }
+</style>
+
+
+@section Scripts {
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            easing: "ease-in-out",
+            once: true,
+            mirror: false
+        });
+    </script>
+} 

@@ -1,0 +1,275 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Ana Sayfa";
+}
+
+<main class="main">
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero section">
+        <div class="container-fluid hero-container" data-aos="fade-up">
+            <div class="row g-0 align-items-center">
+                <div class="col-lg-6 content-col">
+                    <div class="content-wrapper">
+                        <div class="status-badge">Yeni Sezon</div>
+                        <h2>Stil ve Kalitenin Buluşma Noktası</h2>
+                        <p>Luna's Shop'da en trend ürünleri keşfedin. Kaliteli ve şık tasarımlarla tarzınızı yansıtın.</p>
+
+                        <div class="opening-hours" data-aos="fade-up" data-aos-delay="500">
+                            <i class="bi bi-clock"></i>
+                            <span>Her Gün: 09:00 - 21:00</span>
+                        </div>
+
+                        <div class="btn-group">
+                            <a href="/products" class="btn btn-book">Ürünleri Keşfet</a>
+                            <a href="/category" class="btn btn-menu">Kategoriler</a>
+                        </div>
+
+                        <div class="social-links">
+                            <a href="#"><i class="bi bi-facebook"></i></a>
+                            <a href="#"><i class="bi bi-instagram"></i></a>
+                            <a href="#"><i class="bi bi-twitter"></i></a>
+                            <a href="#"><i class="bi bi-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 swiper-col">
+                    <div class="swiper product-swiper" style="max-width:420px;margin-left:auto;">
+                        <div class="swiper-wrapper">
+                            @if (Model.Products?.CurrentData != null && Model.Products.CurrentData.Any())
+                            {
+                                foreach (var product in Model.Products.CurrentData.Take(8))
+                                {
+                                    <div class="swiper-slide">
+                                        <div class="img-container p-2">
+                                            <img src="@(string.IsNullOrEmpty(product.CoverImagePath) ? "/assets/img/no-image.png" : product.CoverImagePath)" alt="@product.Name" style="width:100%;height:320px;object-fit:cover;border-radius:16px;box-shadow:0 2px 12px rgba(0,0,0,0.15);">
+                                        </div>
+                                    </div>
+                                }
+                            }
+                            else
+                            {
+                                <div class="swiper-slide">
+                                    <div class="img-container p-2">
+                                        <img src="/assets/img/no-image.png" alt="Ürün Yok" style="width:100%;height:320px;object-fit:cover;border-radius:16px;">
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about section">
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+            <div class="row align-items-center gy-4">
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="about-content">
+                        <h3>Hakkımızda</h3>
+                        <p class="fst-italic">Luna's Shop, 2020 yılında kurulmuş, müşteri memnuniyetini ve kaliteyi ön planda tutan yenilikçi bir e-ticaret platformudur.</p>
+                        <p>Amacımız, kullanıcılarımıza en iyi alışveriş deneyimini sunmak ve her sezonun en trend ürünlerini uygun fiyatlarla buluşturmaktır. Ekibimiz, genç ve dinamik kadrosuyla sürekli olarak kendini geliştirmekte ve sektörde öncü olmayı hedeflemektedir.</p>
+                        <ul>
+                            <li>Geniş ürün yelpazesi</li>
+                            <li>7/24 müşteri desteği</li>
+                            <li>Hızlı ve güvenli teslimat</li>
+                            <li>Modern ve kullanıcı dostu arayüz</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="about-image-wrapper">
+                        <img src="~/assets/img/shop/about1.jpg" class="img-fluid main-image shadow" alt="Mağaza İç Mekanı">
+                        <img src="~/assets/img/shop/about2.jpg" class="img-fluid accent-image shadow" alt="Ürün Vitrini">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section py-5">
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+            <h2 class="mb-4">İletişim</h2>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="card shadow-sm p-4" style="background:#181b1b;color:#fff;">
+                        <h4 class="mb-3">Bize Ulaşın</h4>
+                        <p>Her türlü soru, öneri ve destek talepleriniz için bizimle iletişime geçebilirsiniz.</p>
+                        <ul class="mb-4">
+                            <li><b>Telefon:</b> 0 (555) 123 45 67</li>
+                            <li><b>E-posta:</b> info@lunasshop.com</li>
+                            <li><b>Adres:</b> Mock Cad. No: 123, İstanbul</li>
+                        </ul>
+                        <form>
+                            <div class="mb-3">
+                                <label class="form-label">Adınız</label>
+                                <input type="text" class="form-control" placeholder="Adınızı girin">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">E-posta</label>
+                                <input type="email" class="form-control" placeholder="E-posta adresiniz">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Mesajınız</label>
+                                <textarea class="form-control" rows="4" placeholder="Mesajınızı yazın"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Gönder</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="products section">
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+            <h2 class="mb-4 text-center">En Popüler Ürünler</h2>
+            <div class="row g-4 justify-content-center">
+                @if (Model.MostPopularProducts != null && Model.MostPopularProducts.Any())
+                {
+                    foreach (var product in Model.MostPopularProducts)
+                    {
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex align-items-stretch">
+                            <div class="card product-card shadow-sm h-100 w-100">
+                                <div class="product-image-wrapper position-relative">
+                                    <img src="@(string.IsNullOrEmpty(product.CoverImagePath) ? "/assets/img/no-image.png" : product.CoverImagePath)" class="card-img-top" alt="@product.Name" style="object-fit:cover;width:100%;height:200px;">
+                                </div>
+                                <div class="card-body d-flex flex-column justify-content-between">
+                                    <h5 class="card-title text-truncate" title="@product.Name">@product.Name</h5>
+                                    <div class="mb-2 text-muted small">@product.BrandName</div>
+                                    <div class="fw-bold mb-2">@product.Price.ToString("C")</div>
+                                    <a href="/products" class="btn btn-outline-primary w-100 mt-auto">Detay</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="col-12">
+                        <p>Hiç ürün bulunamadı.</p>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- Brands Section -->
+    <section id="brands" class="brands section">
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+            <h2>Markalar</h2>
+            <div class="row g-4">
+                @if (Model.Brands != null && Model.Brands.Any())
+                {
+                    var featuredBrands = Model.Brands;
+                    foreach (var brand in featuredBrands)
+                    {
+                        <div class="col-md-3 mb-4">
+                            <div class="card h-100 shadow-sm text-center">
+                                <img src="@(string.IsNullOrEmpty(brand.LogoImagePath) ? "/assets/img/no-image.png" : brand.LogoImagePath)" class="card-img-top p-4" alt="@brand.Name" style="object-fit:contain;width:100%;height:150px;">
+                                <div class="card-body">
+                                    <h5 class="card-title">@brand.Name</h5>
+                                    <p class="card-text">@brand.Description</p>
+                                    <a href="/BrandDetail/@brand.Id" class="btn btn-primary w-100">Detay</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="col-12">
+                        <p>Hiç marka bulunamadı.</p>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+
+</main>
+
+@section Scripts {
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            easing: "ease-in-out",
+            once: true,
+            mirror: false
+        });
+
+        // Initialize Swiper
+        document.addEventListener('DOMContentLoaded', function() {
+            new Swiper('.product-swiper', {
+                loop: true,
+                speed: 800,
+                autoplay: { delay: 4000 },
+                effect: 'slide',
+                slidesPerView: 1,
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev'
+                }
+            });
+        });
+    </script>
+}
+<style>
+/* Kartların arka planını koyu yap */
+.card.product-card,
+.card.h-100 {
+    background-color: #181b1b !important;
+    border: 1px solid #232323;
+    color: #fff;
+}
+
+/* Kart içindeki başlık ve metinler için kontrastı artır */
+.card.product-card .card-title,
+.card.h-100 .card-title,
+.card.h-100 .card-text {
+    color: #fff;
+}
+
+/* Butonları temaya uygun özelleştir */
+.btn-theme {
+    background-color: #ffb347;
+    color: #181b1b;
+    border: none;
+    transition: background 0.2s;
+}
+.btn-theme:hover,
+.btn-theme:focus {
+    background-color: #ff9800;
+    color: #fff;
+}
+
+/* Eski mavi butonları temaya uygun butonla değiştir */
+.card .btn-outline-primary,
+.btn-primary,
+.pagination .btn-primary,
+.pagination .btn-outline-primary {
+    background: #232323 !important;
+    color: #ffb347 !important;
+    border: 1px solid #ffb347 !important;
+}
+.card .btn-outline-primary:hover,
+.btn-primary:hover,
+.pagination .btn-primary:hover,
+.pagination .btn-outline-primary:hover {
+    background: #ffb347 !important;
+    color: #181b1b !important;
+}
+
+/* Kart gölgelerini yumuşat */
+.card.shadow-sm {
+    box-shadow: 0 2px 12px 0 rgba(0,0,0,0.15);
+}
+</style>

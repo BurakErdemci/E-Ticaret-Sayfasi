@@ -1,0 +1,141 @@
+@model Panel.Models.CategoryEditModel
+
+@{
+    ViewData["Title"] = "Edit Category";
+    var parentCategories = ViewData["Categories"] as IEnumerable<SelectListItem>;
+}
+
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Edit Category</h1>
+    <a asp-action="Index" class="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm">
+        <i class="fas fa-arrow-left fa-sm text-white-50"></i> Back to List
+    </a>
+</div>
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger shadow">
+        <i class="fas fa-exclamation-circle"></i>
+        @TempData["ErrorMessage"]
+    </div>
+}
+
+<div class="row">
+    <!-- Category Edit Card -->
+    <div class="col-xl-6 col-lg-7">
+        <div class="card shadow mb-4">
+            <!-- Card Header -->
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">Category Information</h6>
+            </div>
+            <!-- Card Body -->
+            <div class="card-body">
+                <form asp-action="Edit" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Id" />
+                    
+                    <div class="form-group">
+                        <label asp-for="Name" class="small mb-1">Category Name</label>
+                        <input asp-for="Name" class="form-control" placeholder="Enter category name" />
+                        <span asp-validation-for="Name" class="text-danger small"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="ParentId" class="small mb-1">Parent Category</label>
+                        <select asp-for="ParentId" class="form-control">
+                            <option value="0">Main Category</option>
+                            @if (parentCategories != null)
+                            {
+                                @foreach (var item in parentCategories)
+                                {
+                                    <option value="@item.Value">@item.Text</option>
+                                }
+                            }
+                        </select>
+                        <span asp-validation-for="ParentId" class="text-danger small"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="small mb-1">Status</label>
+                        <div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" asp-for="Active" value="true" checked="@Model.Active" id="activeRadio">
+                                <label class="form-check-label" for="activeRadio">Active</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" asp-for="Active" value="false" checked="@(Model.Active == false)" id="inactiveRadio">
+                                <label class="form-check-label" for="inactiveRadio">Inactive</label>
+                            </div>
+                        </div>
+                        <span asp-validation-for="Active" class="text-danger small"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Image" class="small mb-1">Category Image</label>
+                        <input asp-for="Image" class="form-control-file" type="file" accept="image/*" />
+                        <span asp-validation-for="Image" class="text-danger small"></span>
+                        @if (!string.IsNullOrEmpty(Model.CurrentImagePath))
+                        {
+                            <div class="mt-2">
+                                <img src="@Model.CurrentImagePath" alt="Current Image" width="100" />
+                            </div>
+                        }
+                    </div>
+
+                    <hr>
+                    <div class="d-flex justify-content-between">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save fa-sm"></i> Save Changes
+                        </button>
+                        <a asp-action="Delete" asp-route-id="@Model.Id" 
+                           class="btn btn-danger" 
+                           onclick="return confirm('Are you sure you want to delete this category? This action cannot be undone.');">
+                            <i class="fas fa-trash fa-sm"></i> Delete
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Category Hierarchy Card -->
+    <div class="col-xl-6 col-lg-5">
+        <div class="card shadow mb-4">
+            <!-- Card Header -->
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Category Hierarchy</h6>
+            </div>
+            <!-- Card Body -->
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Level</th>
+                                <th>Category</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model.ParentId != 0 && parentCategories != null)
+                            {
+                                <tr>
+                                    <td><span class="badge badge-primary">Parent</span></td>
+                                    <td>@(parentCategories.FirstOrDefault(x => x.Value == Model.ParentId.ToString())?.Text ?? "Main Category")</td>
+                                </tr>
+                            }
+                            <tr>
+                                <td><span class="badge badge-success">Current</span></td>
+                                <td>@Model.Name</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+} 

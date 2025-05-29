@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>@ViewData["Title"] - Luna's Shop</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+    <!-- Favicons -->
+    <link href="~/assets/img/favicon.png" rel="icon">
+    <link href="~/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="~/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="~/assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="~/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Main CSS File -->
+    <link href="~/assets/css/main.css" rel="stylesheet">
+
+    <style>
+    /* Kartların arka planını koyu yap */
+    .card.product-card,
+    .card.h-100 {
+        background-color: #181b1b !important;
+        border: 1px solid #232323;
+        color: #fff;
+    }
+    .card.product-card .card-title,
+    .card.h-100 .card-title,
+    .card.h-100 .card-text {
+        color: #fff;
+    }
+    .btn-theme {
+        background-color: #ffb347;
+        color: #181b1b;
+        border: none;
+        transition: background 0.2s;
+    }
+    .btn-theme:hover,
+    .btn-theme:focus {
+        background-color: #ff9800;
+        color: #fff;
+    }
+    .card .btn-outline-primary,
+    .btn-primary,
+    .pagination .btn-primary,
+    .pagination .btn-outline-primary {
+        background: #232323 !important;
+        color: #ffb347 !important;
+        border: 1px solid #ffb347 !important;
+    }
+    .card .btn-outline-primary:hover,
+    .btn-primary:hover,
+    .pagination .btn-primary:hover,
+    .pagination .btn-outline-primary:hover {
+        background: #ffb347 !important;
+        color: #181b1b !important;
+    }
+    .card.shadow-sm {
+        box-shadow: 0 2px 12px 0 rgba(0,0,0,0.15);
+    }
+    .header .navmenu ul {
+        gap: 1.5rem;
+        display: flex;
+        align-items: center;
+        margin-bottom: 0;
+    }
+    .header .navmenu ul li {
+        margin: 0;
+    }
+    .header .d-flex.align-items-center {
+        gap: 1.2rem;
+    }
+    @@media (max-width: 991.98px) {
+        .header .navmenu ul {
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .header .d-flex.align-items-center {
+            gap: 0.7rem;
+        }
+    }
+    </style>
+</head>
+<body>
+    <header id="header" class="header d-flex align-items-center sticky-top">
+        <div class="container position-relative d-flex align-items-center justify-content-between">
+            <a href="/" class="logo d-flex align-items-center me-auto me-xl-0">
+                <i class="bi bi-shop"></i>
+                <h1 class="sitename">Luna's Shop</h1>
+            </a>
+            <nav id="navmenu" class="navmenu">
+                <ul>
+                    <li><a href="/">Ana Sayfa</a></li>
+                    <li><a href="/#about">Hakkımızda</a></li>
+                    <li><a href="/category">Kategoriler</a></li>
+                    <li><a href="/#brands">Markalar</a></li>
+                    <li><a href="/#contact">İletişim</a></li>
+                </ul>
+                <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+            </nav>
+            <div class="d-flex align-items-center gap-3 ms-3">
+                <a href="/product" class="btn-getstarted d-none d-sm-block">Alışverişe Başla</a>
+                <a href="/cart" class="btn btn-outline-primary ms-2 position-relative d-flex align-items-center justify-content-center" style="border: 2px solid #ffb347; background: #181b1b; color: #ffb347; width: 44px; height: 44px; padding: 0; border-radius: 10px;">
+                    <i class="bi bi-cart" style="font-size: 1.3rem; color: #ffb347;"></i>
+                    @await Component.InvokeAsync("CartSummary")
+                </a>
+                @if (User.Identity != null && User.Identity.IsAuthenticated)
+                {
+                    <span class="px-4 py-2 rounded-pill ms-2" style="background: #232323; color: #ff9900; font-weight: 600;">Hoşgeldin, @User.Identity.Name</span>
+                    <form method="post" asp-page="/Logout" class="d-inline ms-2">
+                        <button type="submit" class="btn btn-sm px-4 py-2 rounded-pill ms-2" style="background: #232323; color: #fff; border: 1px solid #ff9900; font-weight: 600;">Çıkış Yap</button>
+                    </form>
+                }
+                else
+                {
+                    <a class="btn-getstarted d-none d-sm-block ms-2" href="/Login" style="background: #232323; color: #ff9900;">Giriş Yap</a>
+                }
+            </div>
+        </div>
+    </header>
+    @RenderBody()
+
+    <!-- Vendor JS Files -->
+    <script src="~/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/assets/vendor/aos/aos.js"></script>
+    <script src="~/assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Main JS File -->
+    <script src="~/assets/js/main.js"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html> 

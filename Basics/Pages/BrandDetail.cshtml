@@ -1,0 +1,22 @@
+@page "{id:int}"
+@model BrandDetailModel
+@{
+    ViewData["Title"] = Model.Brand?.Name ?? "Marka Detayı";
+}
+<div class="container py-5">
+    @if (Model.Brand != null)
+    {
+        <div class="card shadow-sm mx-auto" style="max-width:500px;background:#181b1b;color:#fff;">
+            <img src="@Model.Brand.LogoImagePath" class="card-img-top p-4" alt="@Model.Brand.Name" style="object-fit:contain;width:100%;height:200px;">
+            <div class="card-body text-center">
+                <h2 class="card-title mb-3" style="color:#ffb347;">@Model.Brand.Name</h2>
+                <p class="card-text mb-4">@Model.Brand.Description</p>
+                <a href="/brands" class="btn btn-outline-primary">Tüm Markalar</a>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-warning text-center">Marka bulunamadı.</div>
+    }
+</div> 

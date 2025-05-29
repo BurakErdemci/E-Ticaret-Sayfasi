@@ -1,0 +1,50 @@
+@page
+@model ProductModel
+@{
+    ViewData["Title"] = "Ürünler";
+}
+
+<section class="product-list-section py-5">
+    <div class="container">
+        <h2 class="mb-4">Ürünler</h2>
+        <div class="row">
+            @if (Model.Products != null && Model.Products.Any())
+            {
+                foreach (var product in Model.Products)
+                {
+                    <div class="col-md-3 mb-4">
+                        <div class="card h-100 shadow-sm">
+                            <img src="@product.CoverImagePath" class="card-img-top" alt="@product.Name" style="object-fit:cover;width:100%;height:200px;">
+                            <div class="card-body">
+                                <h5 class="card-title">@product.Name</h5>
+                                <p class="card-text">@product.BrandName</p>
+                                <p class="card-text fw-bold">@product.Price.ToString("C")</p>
+                                <a href="/productdetail/@product.Id" class="btn btn-primary w-100">Detay</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="col-12">
+                    <p>Hiç ürün bulunamadı.</p>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+<style>
+.product-list-section .card-img-top {
+    object-fit: cover;
+    width: 100%;
+    height: 200px;
+}
+.card,
+.card.product-card,
+.card.h-100 {
+    background-color: #181b1b !important;
+    border: 1px solid #232323;
+    color: #fff;
+}
+</style> 
