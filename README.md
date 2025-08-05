@@ -62,7 +62,8 @@ Luna Kategori
 
 
 Luna Login
-<img width="1850" height="876" alt="luna login" src="https://github.com/user-attachments/assets/41b1b5b5-c82d-4291-8534-3c6d76dbd38a" />
+<img width="1845" height="877" alt="lunalogin1" src="https://github.com/user-attachments/assets/ded57d3a-fdc4-4ab7-936e-6217e1ed5a10" />
+
 
 
 Luna Register
